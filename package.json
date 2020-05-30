@@ -7,7 +7,7 @@
     "client": "cd client && npm run dev",
     "server": "cd server && npm run dev",
     "dev": "concurrently 'npm run client' 'npm run server'",
-    "launch": "npm install && cd client && npm install && cd ../server && npm install && npm run dev"
+    "launch": "npm install && cd client && npm install && cd ../server && npm install && cd .. && npm run dev"
   },
   "keywords": [],
   "author": "",
