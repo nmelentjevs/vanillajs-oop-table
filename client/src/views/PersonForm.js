@@ -77,6 +77,7 @@ export class PersonForm extends View {
   }
   template() {
     return `
+        <h1>Add Person Details</h1>
         <label for='first' class='person-add__label'>First Name</label>
         <input type='text' name='first' class='person-add__input' placeholder="${this.model.get(
           'first'

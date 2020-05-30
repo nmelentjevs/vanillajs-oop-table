@@ -18,10 +18,6 @@ thead {
   display: none;
 }
 
-/*
- * make everything display block so it 
- * aligns vertically
- */
 tbody,
 tr,
 th,
@@ -33,17 +29,6 @@ td {
   white-space: normal;
 }
 
-/* Labeling
- * adding a data-title attribute to the cells
- * lets us add text before the content to provide
- * the missing context
- * 
- * Markup: 
- *   <td data-title="Column Header">Content Here</td>
- * 
- * Display:
- *   Column Header: Content Here
- */
 th[data-title]:before,
 td[data-title]:before {
   content: attr(data-title) ':\00A0';
@@ -195,14 +180,14 @@ td:empty {
     z-index: 2;
     text-align: center;
 
-    .button-wrapper {
+    &__wrapper {
       background-color: #fff;
       border-top: none;
       // height: 25px;
       display: flex;
       justify-content: center;
       align-items: center;
-      .btn {
+      &-btn {
         cursor: pointer;
         font-size: 1em;
         height: 20px;
@@ -290,11 +275,11 @@ td:empty {
       background-color: #fff;
       .button-toolbar {
         display: block;
-        .button-wrapper {
+        &__wrapper {
           height: 50px;
           background-color: #fff;
           border: none;
-          .btn {
+          &-btn {
             height: 100%;
             margin: 2px;
             border-radius: 5px;
@@ -304,42 +289,48 @@ td:empty {
     }
   }
 }
-.people-table .delete-person {
-  cursor: pointer;
-  font-size: 1em;
-  color: salmon;
-  font-family: 'Helvetica', 'Arial', sans-serif;
-  font-weight: bold;
-  text-align: center;
-  height: 20px;
-  border-radius: 5px;
-  &:hover {
-    background: salmon;
-    color: #fff;
-    padding: 5px 10px;
+
+.people-table {
+  .delete-person {
+    cursor: pointer;
+    font-size: 1em;
+    color: salmon;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    height: 20px;
+    border-radius: 5px;
+    &:hover {
+      background: salmon;
+      color: #fff;
+      padding: 5px 10px;
+    }
   }
-}
 
-.people-table tbody tr:hover {
-  color: #009879 !important;
-  // border-bottom: 1px solid;
-}
+  tbody {
+    tr {
+      &:nth-of-type(even) {
+        background-color: whitesmoke;
+        color: black;
+      }
 
-.people-table tbody tr:nth-of-type(even) {
-  background-color: whitesmoke;
-  color: black;
-}
+      &:nth-of-type(odd) {
+        background-color: white;
+        color: black;
+      }
 
-.people-table tbody tr:nth-of-type(odd) {
-  background-color: white;
-  color: black;
-}
+      &:last-of-type {
+        border-bottom: 2px solid #009879;
+      }
 
-.people-table tbody tr:last-of-type {
-  border-bottom: 2px solid #009879;
-}
-
-.people-table tbody tr.active-row {
-  font-weight: bold;
-  color: #009879;
+      .active-row {
+        font-weight: bold;
+        color: #009879;
+      }
+      &:hover {
+        color: #009879 !important;
+        // border-bottom: 1px solid;
+      }
+    }
+  }
 }

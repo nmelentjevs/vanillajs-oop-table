@@ -47,16 +47,18 @@ export class PersonRow extends View {
     toolbar.className = 'button-toolbar';
 
     toolbar.innerHTML = `
-      <div class='button-wrapper' contenteditable='false'>
-        <button class="btn btn-save"><i class='fa fa-check'></i></button>
-        <button class="btn btn-cancel"><i class="fas fa-ban"></i></button>
+      <div class='button-toolbar__wrapper' contenteditable='false'>
+        <button class="button-toolbar__wrapper-btn button-toolbar__wrapper-btn-save"><i class='fa fa-check'></i></button>
+        <button class="button-toolbar__wrapper-btn button-toolbar__wrapper-btn-cancel"><i class="fas fa-ban"></i></button>
       </div>
     `;
 
     td.appendChild(toolbar);
 
-    const btnSave = toolbar.querySelector('.btn-save');
-    const btnCancel = toolbar.querySelector('.btn-cancel');
+    const btnSave = toolbar.querySelector('.button-toolbar__wrapper-btn-save');
+    const btnCancel = toolbar.querySelector(
+      '.button-toolbar__wrapper-btn-cancel'
+    );
     btnSave.addEventListener('click', () => this.finishEditing(td));
     btnCancel.addEventListener('click', () => this.cancelEditing(td));
   }
