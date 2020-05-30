@@ -1,0 +1,19 @@
+{
+  "name": "test-table",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "client": "cd client && npm run dev",
+    "server": "cd server && npm run dev",
+    "dev": "concurrently 'npm run client' 'npm run server'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^5.2.0",
+    "csv-parser": "^2.3.2",
+    "csv-writer": "^1.6.0"
+  }
+}

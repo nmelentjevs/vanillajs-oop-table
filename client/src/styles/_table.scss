@@ -1,0 +1,345 @@
+/* Mobile-first styles */
+
+/* make each table separate from other ones */
+table {
+  border: 0;
+  padding-bottom: 0;
+  display: block;
+  width: 100%;
+}
+
+/* make sure captions are displayed */
+caption {
+  display: block;
+}
+
+/* hide the thead */
+thead {
+  display: none;
+}
+
+/*
+ * make everything display block so it 
+ * aligns vertically
+ */
+tbody,
+tr,
+th,
+td {
+  border: 0;
+  display: block;
+  padding: 0;
+  text-align: center;
+  white-space: normal;
+}
+
+/* Labeling
+ * adding a data-title attribute to the cells
+ * lets us add text before the content to provide
+ * the missing context
+ * 
+ * Markup: 
+ *   <td data-title="Column Header">Content Here</td>
+ * 
+ * Display:
+ *   Column Header: Content Here
+ */
+th[data-title]:before,
+td[data-title]:before {
+  content: attr(data-title) ':\00A0';
+  font-weight: bold;
+}
+
+th:not([data-title]) {
+  font-weight: bold;
+}
+
+/* hide empty cells*/
+td:empty {
+  display: none;
+}
+
+@media only screen and (min-width: 52em) {
+  /* Labeling
+     * Hide the mobile labels */
+  th[data-title]:before,
+  td[data-title]:before {
+    content: '';
+    font-weight: bold;
+  }
+
+  th:not([data-title]) {
+    font-weight: bold;
+  }
+
+  /* re-show empty cells*/
+  td:empty {
+    display: table-cell;
+  }
+
+  /* show the thead again */
+  thead {
+    display: table-header-group;
+  }
+
+  /* make everything display regularly again */
+  tbody {
+    display: table-header-group;
+  }
+
+  tbody,
+  tr,
+  th,
+  td {
+    border: 0;
+    padding: 0;
+    text-align: center;
+    white-space: normal;
+  }
+
+  th,
+  td {
+    display: table-cell;
+  }
+
+  tr {
+    display: table-row;
+  }
+
+  table {
+    border-style: none;
+    border-top-width: 0;
+    width: auto;
+  }
+
+  tr {
+    border-style: none;
+    border-bottom-width: 0;
+  }
+  th,
+  td {
+    border-style: none;
+    padding-right: 1em;
+    text-align: center;
+    min-width: 100px;
+    vertical-align: top;
+  }
+
+  thead tr:last-child {
+    border-bottom-width: 2px;
+  }
+
+  thead th,
+  tr.index th {
+    font-weight: bold;
+    line-height: 1.25;
+    text-transform: uppercase;
+  }
+
+  thead th {
+    padding-bottom: 0.25em;
+  }
+
+  tbody:first-of-type tr.index th {
+    padding-top: 1em;
+  }
+
+  tbody th {
+    font-weight: normal;
+  }
+
+  .people-table span.delete {
+    position: relative;
+    background: salmon;
+    font-size: 0.9em;
+  }
+} /*end 41em MQ*/
+
+.people-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 200px;
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.people-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+}
+
+.people-table th,
+.people-table td {
+  padding: 12px 15px;
+}
+
+.people-table tr {
+  position: relative;
+}
+
+.people-table td {
+  position: relative;
+  outline: 0;
+  .button-toolbar {
+    display: none;
+    border-top: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 90%;
+    z-index: 2;
+    text-align: center;
+
+    .button-wrapper {
+      background-color: #fff;
+      border-top: none;
+      // height: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .btn {
+        cursor: pointer;
+        font-size: 1em;
+        height: 20px;
+        width: 50%;
+        &-save {
+          border: 1px solid green;
+          color: green;
+          background: white;
+          &:hover {
+            color: white;
+            background: green;
+          }
+        }
+        &-cancel {
+          border: 1px solid coral;
+          color: coral;
+          background: white;
+          &:hover {
+            color: white;
+            background: coral;
+          }
+        }
+      }
+    }
+  }
+  &.in-editing {
+    border: 1px solid rgb(105, 105, 105);
+    background-color: #fff;
+    .button-toolbar {
+      display: block;
+    }
+  }
+}
+
+@media only screen and (max-width: 52em) {
+  .person-add {
+    max-width: 100% !important;
+  }
+
+  .people-table td {
+    position: relative;
+    outline: 0;
+    .button-toolbar {
+      display: none;
+      border-top: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      width: 40%;
+      z-index: 2;
+      text-align: center;
+      .button-wrapper {
+        background-color: #fff;
+        border: none;
+      }
+      .btn {
+        cursor: pointer;
+        font-size: 1em;
+        padding: 10px 20px;
+        width: 40%;
+        &-save {
+          border: 1px solid green;
+          color: green;
+          background: white;
+          &:hover {
+            color: white;
+            background: green;
+          }
+        }
+        &-cancel {
+          border: 1px solid coral;
+          color: coral;
+          background: white;
+          &:hover {
+            color: white;
+            background: coral;
+          }
+        }
+      }
+    }
+    &.in-editing {
+      border: 1px solid rgb(105, 105, 105);
+      border-radius: 5px;
+      background-color: #fff;
+      .button-toolbar {
+        display: block;
+        .button-wrapper {
+          height: 50px;
+          background-color: #fff;
+          border: none;
+          .btn {
+            height: 100%;
+            margin: 2px;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+  }
+}
+.people-table .delete-person {
+  cursor: pointer;
+  font-size: 1em;
+  color: salmon;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-weight: bold;
+  text-align: center;
+  height: 20px;
+  border-radius: 5px;
+  &:hover {
+    background: salmon;
+    color: #fff;
+    padding: 5px 10px;
+  }
+}
+
+.people-table tbody tr:hover {
+  color: #009879 !important;
+  // border-bottom: 1px solid;
+}
+
+.people-table tbody tr:nth-of-type(even) {
+  background-color: whitesmoke;
+  color: black;
+}
+
+.people-table tbody tr:nth-of-type(odd) {
+  background-color: white;
+  color: black;
+}
+
+.people-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+.people-table tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
+}
