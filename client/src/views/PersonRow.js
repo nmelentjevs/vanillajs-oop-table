@@ -1,4 +1,5 @@
 import { View } from './View';
+
 export class PersonRow extends View {
   handleDeleteClick = () => {
     this.model.trigger('delete');
@@ -21,22 +22,26 @@ export class PersonRow extends View {
     td.setAttribute('data-old-value', td.innerHTML);
     this.createButtonToolbar(td);
   }
+
   cancelEditing = (td) => {
     td.innerHTML = td.getAttribute('data-old-value');
 
     td.classList.remove('in-editing');
     // this.removeToolbar(td);
   };
+
   finishEditing = (td) => {
     td.classList.remove('in-editing');
     this.removeToolbar(td);
     this.model.set({ [td.getAttribute('data-title')]: td.textContent.trim() });
     this.model.save();
   };
+
   inEditing(td) {
     if (!td.classList.contains('edit-person')) return true;
     return td.classList.contains('in-editing');
   }
+
   findEditing() {
     const tds = document.querySelectorAll('.edit-person');
     return Array.from(tds).find((td) => this.inEditing(td));

@@ -1,6 +1,7 @@
 import { View } from './View';
 import { PeopleTableHeading } from './TableHeading';
 import { PeopleTableBody } from './TableBody';
+
 export class PeopleTable extends View {
   constructor(root, model, data) {
     super(root, model);

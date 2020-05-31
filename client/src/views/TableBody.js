@@ -42,6 +42,7 @@ export class PeopleTableBody extends View {
         confirmModal.render();
         transition('modal').fade('in', 100);
       });
+
       personRow.render();
     });
   }

@@ -1,5 +1,6 @@
 import { View } from './View';
 import { PersonForm } from './PersonForm';
+
 export class PersonAdd extends View {
   regionsMap() {
     return {

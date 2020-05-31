@@ -9,10 +9,8 @@ export class ApiSync {
   save(data) {
     const { id } = data;
     if (id) {
-      // put
       return axios.patch(`${this.rootUrl}/${id}`, data);
     } else {
-      // post
       return axios.post(`${this.rootUrl}`, data);
     }
   }

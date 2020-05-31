@@ -27,6 +27,7 @@ export class View {
       });
     }
   }
+
   mapRegions(fragment) {
     const regionsMap = this.regionsMap();
     for (let key in regionsMap) {
@@ -38,9 +39,11 @@ export class View {
     }
   }
   onRender() {}
+
   remove() {
     this.parent.innerHTML = '';
   }
+
   render() {
     this.parent.innerHTML = '';
     const templateElement = document.createElement('template');

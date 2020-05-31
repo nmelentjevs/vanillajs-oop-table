@@ -1,7 +1,6 @@
 import { View } from './View';
 import { Person } from '../models';
 import { PeopleTable } from './PeopleTable';
-import { PersonAdd } from './PersonAdd';
 import { ConfirmModal } from './ConfirmModal';
 import { PersonForm } from './PersonForm';
 import transition from '../utils/transition';
@@ -25,6 +24,7 @@ export class App extends View {
       this.model,
       people.models
     );
+
     new PersonForm(this.regions.personAdd, this.model).render();
     people.fetch().then(() => {
       peopleTable.render();
